@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hello Factory</title>
+    <style>
+      body { font-family: system-ui, sans-serif; max-width: 32rem; margin: 3rem auto; padding: 0 1rem; }
+      output { display: block; margin-top: 1rem; font-size: 1.25rem; }
+    </style>
+  </head>
+  <body>
+    <h1>Hello Factory</h1>
+    <form id="greet">
+      <label>Name <input name="name" autocomplete="off" /></label>
+      <button type="submit">Greet</button>
+    </form>
+    <output id="message"></output>
+    <p>Visits: <span id="count">0</span></p>
+    <script type="module">
+      const form = document.getElementById("greet");
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        const name = new FormData(form).get("name");
+        const answer = await fetch(`/api/greeter/greet?name=${encodeURIComponent(name)}`);
+        document.getElementById("message").textContent = (await answer.json()).message;
+        const visit = await fetch("/api/visits/visits", { method: "POST" });
+        document.getElementById("count").textContent = (await visit.json()).count;
+      });
+    </script>
+  </body>
+</html>

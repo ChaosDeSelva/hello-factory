@@ -1,0 +1,14 @@
+{
+  "name": "hello-factory",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A tiny app (two Node microservices and a web UI) used to exercise the software factory.",
+  "type": "module",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "test": "node --test",
+    "start:greeter": "node services/greeter/main.mjs",
+    "start:visits": "node services/visits/main.mjs",
+    "start:ui": "node ui/main.mjs"
+  }
+}
