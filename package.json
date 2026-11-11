@@ -4,11 +4,18 @@
   "private": true,
   "description": "A tiny app (two Node microservices and a web UI) used to exercise the software factory.",
   "type": "module",
-  "engines": { "node": ">=22" },
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
     "test": "node --test",
     "start:greeter": "node services/greeter/main.mjs",
     "start:visits": "node services/visits/main.mjs",
     "start:ui": "node ui/main.mjs"
+  },
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ChaosDeSelva/hello-factory.git"
   }
 }
